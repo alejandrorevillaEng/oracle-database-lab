@@ -1,7 +1,8 @@
-# Oracle Database Lab — Academic Version
+# Oracle Database Lab - Academic Version
 
 Training repository for Oracle Database administration,
 testing, change management and Git workflows.
 
 Name: Alejandro Revilla Blanco
 Professor: Richard Aviles Lopez
+Remote change test: edited from GitHub.
