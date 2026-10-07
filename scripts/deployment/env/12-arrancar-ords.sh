@@ -15,7 +15,7 @@ else
 fi
 
 code="000"
-for i in $(seq 1 30); do
+for _ in $(seq 1 30); do
   code=$(curl -s -o /dev/null -w '%{http_code}' "$URL" || true)
   if [ "$code" = "200" ] || [ "$code" = "302" ]; then break; fi
   sleep 2
