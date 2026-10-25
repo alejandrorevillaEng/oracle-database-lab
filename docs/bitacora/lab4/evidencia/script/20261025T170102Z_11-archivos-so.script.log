@@ -1,0 +1,46 @@
+== 1. El volumen (/opt/oracle/oradata): lo que la copia de seguridad debe contener ==
+ 104865792 bytes  /opt/oracle/oradata/FREE/FREEPDB1/academia01.dbf
+ 104865792 bytes  /opt/oracle/oradata/FREE/FREEPDB1/clinica01.dbf
+ 104865792 bytes  /opt/oracle/oradata/FREE/FREEPDB1/fintech01.dbf
+ 104865792 bytes  /opt/oracle/oradata/FREE/FREEPDB1/logistica01.dbf
+ 104865792 bytes  /opt/oracle/oradata/FREE/FREEPDB1/retail01.dbf
+ 492838912 bytes  /opt/oracle/oradata/FREE/FREEPDB1/sysaux01.dbf
+ 325066752 bytes  /opt/oracle/oradata/FREE/FREEPDB1/system01.dbf
+  20979712 bytes  /opt/oracle/oradata/FREE/FREEPDB1/temp01.dbf
+ 104865792 bytes  /opt/oracle/oradata/FREE/FREEPDB1/undotbs01.dbf
+  75505664 bytes  /opt/oracle/oradata/FREE/FREEPDB1/users01.dbf
+  18792448 bytes  /opt/oracle/oradata/FREE/control01.ctl
+  18792448 bytes  /opt/oracle/oradata/FREE/control02.ctl
+ 419438592 bytes  /opt/oracle/oradata/FREE/pdbseed/sysaux01.dbf
+ 304095232 bytes  /opt/oracle/oradata/FREE/pdbseed/system01.dbf
+  20979712 bytes  /opt/oracle/oradata/FREE/pdbseed/temp01.dbf
+ 104865792 bytes  /opt/oracle/oradata/FREE/pdbseed/undotbs01.dbf
+ 209715712 bytes  /opt/oracle/oradata/FREE/redo01.log
+ 209715712 bytes  /opt/oracle/oradata/FREE/redo02.log
+ 209715712 bytes  /opt/oracle/oradata/FREE/redo03.log
+ 713039872 bytes  /opt/oracle/oradata/FREE/sysaux01.dbf
+1121984512 bytes  /opt/oracle/oradata/FREE/system01.dbf
+  20979712 bytes  /opt/oracle/oradata/FREE/temp01.dbf
+  57679872 bytes  /opt/oracle/oradata/FREE/undotbs01.dbf
+   7348224 bytes  /opt/oracle/oradata/FREE/users01.dbf
+  68800512 bytes  /opt/oracle/oradata/dbconfig/FREE/dbs/arch1_1_1237845575.dbf
+ 180980736 bytes  /opt/oracle/oradata/dbconfig/FREE/dbs/arch1_2_1237845575.dbf
+  23742976 bytes  /opt/oracle/oradata/dbconfig/FREE/dbs/arch1_3_1237845575.dbf
+ 183843840 bytes  /opt/oracle/oradata/dbconfig/FREE/dbs/arch1_4_1237845575.dbf
+ 200940032 bytes  /opt/oracle/oradata/dbconfig/FREE/dbs/arch1_5_1237845575.dbf
+      3079 bytes  /opt/oracle/oradata/dbconfig/FREE/dbs/init.ora
+      2048 bytes  /opt/oracle/oradata/dbconfig/FREE/dbs/orapwFREE
+      3584 bytes  /opt/oracle/oradata/dbconfig/FREE/dbs/spfileFREE.ora
+       364 bytes  /opt/oracle/oradata/dbconfig/FREE/listener.ora
+        90 bytes  /opt/oracle/oradata/dbconfig/FREE/sqlnet.ora
+       565 bytes  /opt/oracle/oradata/dbconfig/FREE/tnsnames.ora
+== 2. $ORACLE_HOME/dbs: SPFILE y password file (¿archivos o enlaces al volumen?) ==
+-rw-r----- 1 oracle oinstall      3079 May 14  2015 init.ora
+-rw-r----- 1 oracle oinstall      2048 Oct 22 17:20 orapwFREE
+-rw-r----- 1 oracle oinstall      3584 Oct 25 16:53 spfileFREE.ora
+   $ORACLE_HOME/dbs -> /opt/oracle/oradata/dbconfig/FREE/dbs
+== 3. El ADR (diagnostic_dest): alert log y trazas ==
+-rw-r----- 1 oracle oinstall 108168 Oct 25 17:01 /opt/oracle/diag/rdbms/free/FREE/trace/alert_FREE.log
+trazas (.trc) en /opt/oracle/diag/rdbms/free/FREE/trace: 220  ·  tamaño total del ADR: 29M
+== 4. ¿Está el ADR dentro del volumen? (si no, el alert log se pierde al recrear el contenedor) ==
+  NO: /opt/oracle/diag vive en la capa del contenedor. Al recrearlo, el alert log empieza de cero.
