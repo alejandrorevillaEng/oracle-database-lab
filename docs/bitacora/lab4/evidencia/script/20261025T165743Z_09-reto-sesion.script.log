@@ -1,0 +1,19 @@
+
+       SID    SERIAL# USERNAME	     STATUS   SPID		       PGA_USADA_MB PGA_ASIGNADA_MB SQL_ID	  EVENT
+---------- ---------- -------------- -------- ------------------------ ------------ --------------- ------------- --------------------------------
+	65	20309 SYS	     ACTIVE   2235				3.3		3.7 95f633c1g3dbs db file sequential read
+
+SQL_ID		SEGUNDOS    CPU_SEG LECTURAS_LOGICAS LECTURAS_FISICAS SQL_TEXT
+------------- ---------- ---------- ---------------- ---------------- ----------------------------------------------------------------------
+3ds7u2jt1h4nb	       0	  0		   8		    0 SELECT sql_id, ROUND(elapsed_time / 1e6, 1) AS segundos, ROUND(cpu_tim
+33zthwm2mg6ty	      .1	 .1		   3		    0 SELECT s.sid, s.serial#, s.username, s.status, p.spid,	    ROUND(p.
+95f633c1g3dbs	     2.6	2.5		 258		  254 SELECT /* reto_h */ COUNT(*)   FROM admin_academia.aca_matriculas a, a
+
+Session altered.
+
+
+  COUNT(*)
+----------
+ 179940000
+
+Elapsed: 00:00:06.48
