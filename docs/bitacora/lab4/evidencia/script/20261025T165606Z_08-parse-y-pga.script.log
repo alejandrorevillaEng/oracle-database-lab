@@ -1,0 +1,39 @@
+
+===== 1. Análisis (parse) DURO frente a BLANDO: 1000 consultas con literales y 1000 con variable de enlace =====
+LITERALES    an??lisis totales =  1003 | duros =  1000 | CPU de an??lisis =   830 ms | tiempo total =   940 ms
+BIND (:id)   an??lisis totales =     1 | duros =     1 | CPU de an??lisis =     0 ms | tiempo total =    10 ms
+
+-- Lo que quedó en la shared pool (biblioteca de cursores): V$SQL
+
+ETIQUETA                     CURSORES EJECUCIONES KB_SHARED_POOL
+-------------------------- ---------- ----------- --------------
+con :id                             1        1000             39
+con literales                    1000        1000          38845
+(Si salen menos de 1000 cursores con literales es porque la shared pool ya expulsó (aged out) los más viejos: eso también es coste)
+
+===== 2. La PGA ordena: primero en memoria (óptima) y después forzada a disco (TEMP) =====
+lab4_pga_auto    filas ordenadas = 60000 | sorts (memory) = 6 | sorts (disk) = 0 | 40 ms
+lab4_pga_64k     filas ordenadas = 60000 | sorts (memory) = 0 | sorts (disk) = 1 | 350 ms
+(Desde la PDB, V$PGASTAT solo muestra la parte de FREEPDB1; la instancia entera se ve en la raíz, más abajo)
+
+-- Cada área de trabajo (work area) por dentro: V$SQL_WORKAREA
+
+ETIQUETA                   OPERATION_TYPE   POLICY    KB_OPTIMO  KB_USADOS ULTIMA     KB_EN_TEMP
+-------------------------- ---------------- -------- ---------- ---------- ---------- ----------
+PGA autom??tica            WINDOW (SORT)    AUTO           2604       2314 OPTIMAL             0
+manual, 64 KB              WINDOW (SORT)    MANUAL         1728         65 6 PASSES         2048
+(OPTIMAL = cabe en memoria; ONE PASS = se escribe a TEMP y se relee una vez; MULTI-PASS = varias veces: alarma)
+
+-- Toda la instancia (desde la raíz, CON_ID 0): cuánta PGA hay y cuántas ejecuciones fueron óptimas, de una pasada o de varias
+
+NAME                                          VALOR UNIDAD
+---------------------------------------- ---------- ------------
+aggregate PGA target parameter                  512 MB
+total PGA allocated                           406.1 MB
+maximum PGA allocated                         472.3 MB
+over allocation count                             0
+cache hit percentage                           88.3 percent
+
+   OPTIMAS UNA_PASADA VARIAS_PASADAS
+---------- ---------- --------------
+      4279          0              2

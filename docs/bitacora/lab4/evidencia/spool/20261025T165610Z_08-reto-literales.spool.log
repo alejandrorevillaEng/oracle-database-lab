@@ -1,0 +1,5 @@
+SQL Format Cleared
+
+     FIRMA   CURSORES EJECUCIONES EJEMPLO                                                                         
+---------- ---------- ----------- --------------------------------------------------------------------------------
+1.8632E+18       1000        1000 SELECT /* lab4_literal */ COUNT(*) FROM admin_academia.aca_estudiantes WHERE est
