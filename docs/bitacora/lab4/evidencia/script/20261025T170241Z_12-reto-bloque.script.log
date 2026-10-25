@@ -1,0 +1,62 @@
+===== Reto K: direccion fisica de un estudiante > 19000 =====
+
+ESTADO		     ROWID_FILA 	  DATA_OBJECT_ID    ARCHIVO	BLOQUE FILA_EN_BLOQUE
+-------------------- -------------------- -------------- ---------- ---------- --------------
+EGRESADO	     AAAR2mAAAAAAASvABD 	   73126	 16	  1199		   67
+
+===== Volcado del bloque 1199 del archivo 16 =====
+
+
+
+
+--- [A] CABECERA DEL BLOQUE Y LISTA DE TRANSACCIONES (ITL) ---
+Block header dump:  0x000004af
+
+ Object id on Block? Y
+ seg/obj: 0x11da6  csc:  0x0000000000423e2b  itc: 2  flg: E-  typ: 1 - DATA
+     brn: 0  bdba: 0x480 ver: 0x01 opc: 0
+     inc: 0  exflg: 0
+
+
+ Itl	       Xid		    Uba 	Flag  Lck	 Scn/Fsc
+0x01   0x0005.001.000002ab  0x00000a47.0106.02	--U-   68  fsc 0x0000.0042427c
+0x02   0x0000.000.00000000  0x00000000.0000.00	----	0  fsc 0x0000.00000000
+bdba: 0x000004af type: 0x06 SAGE: 0
+
+--- [B] CABECERA DE DATOS Y DIRECTORIO DE FILAS (slot array) ---
+data_block_dump,data header at 0xc0660064
+
+===============
+tsiz: 0x1f98
+hsiz: 0x9a
+pbl: 0xc0660064
+     76543210
+flag=--------
+
+ntab=1
+nrow=68
+frre=-1
+fsbo=0x9a
+fseo=0x9c5
+avsp=0x92b
+tosp=0x92b
+0xe:pti[0]	nrow=68	offs=0
+0x12:pri[0]	offs=0x188b
+0x14:pri[1]	offs=0x18de
+0x16:pri[2]	offs=0x1931
+0x18:pri[3]	offs=0x1984
+0x1a:pri[4]	offs=0x19d7
+0x1c:pri[5]	offs=0x1a2a
+0x1e:pri[6]	offs=0x1a7d
+
+--- [C] LA FILA 67 (estudiante	    20000), columna a columna ---
+tab 0, row 67, @0x1839
+
+tl: 82 fb: --H-FL-- lb: 0x1  cc: 7
+col  0: [ 2]  c3 03
+col  1: [ 9]  30 30 30 32 30 30 30 30 58
+col  2: [11]  4e 6f 6d 62 72 65 32 30 30 30 30
+col  3: [10]  41 70 65 6c 6c 69 64 6f 36 30
+col  4: [21]
+ 65 73 74 32 30 30 30 30 40 61 6c 75 2e 75 63 61 6d 2e 65 64 75
+col  5: [ 8]  45 47 52 45 53 41 44 4f

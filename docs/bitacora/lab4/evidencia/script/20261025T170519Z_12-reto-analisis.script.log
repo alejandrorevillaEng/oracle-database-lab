@@ -1,0 +1,59 @@
+
+Session altered.
+
+
+== 1. Bloques usados por la tabla y rango de IDs ==
+
+BLOQUES_USADOS BLOQUE_MIN BLOQUE_MAX FILAS
+-------------- ---------- ---------- -----
+	   231	      779	1279 #####
+
+== 2. Cuantas filas caben en cada bloque (la longitud de la fila cambia) ==
+
+FILAS	 BLOQUES
+----- ----------
+   95	       1
+   90	      10
+   89	       9
+   88	      93
+   86	       7
+   85	     110
+   68	       1
+
+== 3. Primeros y ultimos bloques por contenido (el orden fisico no sigue al ID) ==
+
+ BLOQUE FILAS ID_MIN ID_MAX
+------- ----- ------ ------
+    779    90	 186	275
+    780    90	 276	365
+    781    90	 366	455
+    782    95	   1	 95
+    783    90	  96	185
+
+ BLOQUE FILAS ID_MIN ID_MAX
+------- ----- ------ ------
+   1279    85  12278  12362
+   1278    85  10917  11001
+   1277    85  15000  15084
+   1276    85  13639  13723
+   1275    85  12193  12277
+
+== 4. El bloque del estudiante 20000 y los que tienen los IDs mas altos ==
+
+QUE		 FILAS ID_MIN ID_MAX
+---------------- ----- ------ ------
+bloque 1199	    68	19933  20000
+bloque del 20000    68	19933  20000
+
+ BLOQUE FILAS ID_MIN ID_MAX
+------- ----- ------ ------
+   1199    68  19933  20000
+   1195    85  19848  19932
+   1191    85  19763  19847
+
+== 5. Fecha y tamano de las dos filas comparadas ==
+
+ESTUDIANTE_ID FECHA				    BYTES
+------------- -------------------------------- ----------
+	  101 2026-10-25 16:47:35.071962000	       68
+	20000 2026-10-25 16:47:35.071962000	       72

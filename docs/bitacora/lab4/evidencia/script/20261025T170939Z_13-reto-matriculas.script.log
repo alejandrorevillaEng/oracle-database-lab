@@ -1,0 +1,70 @@
+
+Session altered.
+
+
+===== 1. Estadisticas reales de las dos tablas de negocio =====
+
+TABLA			    R	 R_BYTES BLOQUES_HWM   PCT_FREE  INI_TRANS BLOQUES_ASIGNADOS MB_ASIGNADOS
+------------------ ---------- ---------- ----------- ---------- ---------- ----------------- ------------
+ACA_ESTUDIANTES 	20000	      76	 244	     10 	 1		 256		2
+ACA_MATRICULAS		60000	      30	 370	     10 	 1		 384		3
+
+===== 2. Filas reales por bloque de ACA_MATRICULAS =====
+
+BLOQUES_CON_FILAS  MIN_FILAS MEDIA_FILAS  MAX_FILAS
+----------------- ---------- ----------- ----------
+	      301	 159	   199.3	210
+
+===== 3. Prediccion con las formulas y tiempo de un recorrido completo =====
+bfr (Unidad 3) = floor((8192-96)*(1-10%)/30) = 242 filas/bloque -> b = ceil(60000/242) = 248 bloques
+bfr (Oracle)   = floor((8192-122)*(1-10%)/(30+2)) = 226 filas/bloque -> b = ceil(60000/226) = 266 bloques
+b real (estadisticas, bajo la HWM) = 370 bloques
+Con la prediccion de la Unidad 3:	  248 bloques = 1.94 MB -> 13 ms en HDD a 150 MB/s  ??	2 ms en SSD a 1 GB/s
+Con la prediccion "Oracle":		  266 bloques = 2.08 MB -> 14 ms en HDD a 150 MB/s  ??	2 ms en SSD a 1 GB/s
+Con los bloques bajo la HWM:		  370 bloques = 2.89 MB -> 19 ms en HDD a 150 MB/s  ??	3 ms en SSD a 1 GB/s
+Con los bloques que tienen filas (301):   301 bloques = 2.35 MB -> 16 ms en HDD a 150 MB/s  ??	2 ms en SSD a 1 GB/s
+Con el segmento asignado completo:	  384 bloques = 3 MB -> 20 ms en HDD a 150 MB/s  ??  3 ms en SSD a 1 GB/s
+
+===== 4. Tamano real de una fila de ACA_MATRICULAS (columnas y VSIZE) =====
+
+MATRICULA_ID ROWID_FILA 	      BLOQUE FILA_EN_BLOQUE BYTES_DATOS
+------------ -------------------- ---------- -------------- -----------
+	   1 AAAR2vAAAAAAAWmAAA 	1446		  0	     24
+
+===== 5. El bloque 1446: nrow y la fila 0 columna a columna =====
+
+
+
+old   1: ALTER SYSTEM DUMP DATAFILE &f BLOCK &b
+new   1: ALTER SYSTEM DUMP DATAFILE 16 BLOCK 1446
+
+
+
+old   1: WITH t AS (SELECT line_number AS n, payload FROM v$diag_trace_file_contents WHERE trace_filename = '&tf'),
+new   1: WITH t AS (SELECT line_number AS n, payload FROM v$diag_trace_file_contents WHERE trace_filename = 'FREE_ora_3315_lab4_matriculas.trc'),
+data_block_dump,data header at 0xb660c064
+===============
+tsiz: 0x1f98
+hsiz: 0x1b6
+pbl: 0xb660c064
+     76543210
+flag=--------
+
+ntab=1
+nrow=210
+frre=-1
+fsbo=0x1b6
+fseo=0x4ed
+avsp=0x337
+tosp=0x337
+0xe:pti[0]	nrow=210	offs=0
+
+--- La fila 0, columna a columna ---
+tab 0, row 0, @0x4ed
+
+tl: 32 fb: --H-FL-- lb: 0x0  cc: 5
+col  0: [ 2]  c1 02
+col  1: [ 3]  c2 06 50
+col  2: [ 2]  c1 10
+col  3: [ 6]  32 30 32 36 2d 31
+col  4: [11]  78 7e 0a 19 11 30 24 0d 52 56 e0
