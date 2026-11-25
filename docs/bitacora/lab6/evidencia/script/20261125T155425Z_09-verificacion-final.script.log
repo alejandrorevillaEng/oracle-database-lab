@@ -1,0 +1,61 @@
+== EVIDENCIA alumno=E054 hora=2026-11-25T15:54:25Z origen=09-verificacion-final
+== EVIDENCIA contenedor=947e1f1ca7d8 dbid=1509902213 arranque=2026-11-24T18:56:41 scn=6479288
+== Parte A · Punto de partida ==
+  [OK]    copia backups/20261123T184551Z_lab6-inicio íntegra
+  [OK]    CDB abierta y en ARCHIVELOG (herencia del Lab 5) (READWRITE/ARCHIVELOG)
+  [OK]    control files multiplexados (herencia del Lab 5) (3)
+== Partes B y C · Lista de turno, parámetros y estados ==
+  [OK]    existe scripts/ops/turno.sql
+  [OK]    existe scripts/ops/validar-arranque.sql
+  [OK]    existe scripts/ops/app.sh
+  [OK]    FREEPDB1 abierta y sin RESTRICTED (READWRITE/NO)
+  [OK]    FREEPDB1 con estado guardado (OPEN)
+  [OK]    db_files sin valor propio en el SPFILE (RESET hecho) (FALSE)
+  [OK]    copia de texto de los parámetros en la evidencia
+== Parte D · Servicios y sesiones ==
+  [OK]    servicio academia_app definido (1)
+  [OK]    servicio academia_app arrancado (1)
+  [OK]    cuenta de aplicación local y abierta (OPEN/NO)
+== Parte F · Almacenamiento ==
+  [OK]    TBS_ACADEMIA_HIST con techo de 40 MB (40)
+  [OK]    histórico compactado (filas que quedan) (2000)
+  [OK]    cuota de CARGA_HIST (30)
+== Parte G · Gobierno del acceso ==
+  [OK]    perfil PRF_PERSONAS (intentos fallidos) (3)
+  [OK]    ANA_GARCIA abierta con su perfil (OPEN/PRF_PERSONAS)
+  [OK]    ANA_GARCIA con el rol de secretaría (1)
+  [OK]    privilegio de esquema del rol de lectura (1)
+  [OK]    UPDATE solo de la columna ESTADO (1)
+  [OK]    APP_ACADEMIA con su rol (1)
+  [OK]    APP_ACADEMIA sin privilegios de objeto sueltos (deuda pagada) (0)
+  [OK]    APP_ACADEMIA sin RESUMABLE (permiso temporal retirado) (0)
+  [OK]    usuarios efímeros borrados (0)
+== Partes H e I · Objetos, diagnóstico y guardia ==
+  [OK]    sin restos de los objetos de prueba (0)
+  [OK]    papelera de ADMIN_ACADEMIA vacía (0)
+  [OK]    objetos inválidos en esquemas de negocio (0)
+  [OK]    sesiones bloqueadas ahora (0)
+  [OK]    fila 101 en ACTIVO (ACTIVO)
+== Evidencias ==
+  [OK]    evidencia 00
+  [OK]    evidencia 01
+  [OK]    evidencia 02
+  [OK]    evidencia 03
+  [OK]    evidencia 04
+  [OK]    evidencia 05
+  [OK]    evidencia 06
+  [OK]    evidencia 07
+  [OK]    evidencia 08
+  [OK]    respuestas en docs/bitacora/lab6-respuestas.md
+  [OK]    config/.env fuera de Git
+  [OK]    ningún archivo de la base en Git
+== Uso de IA y autoría (las mismas reglas que aplica el docente) ==
+  [OK]    login.sql con tu código (prompt de SQLcl)
+  [OK]    código de alumno E054 en config/.env
+  [FALLO] no existe docs/bitacora/lab6-ia.md  -> D1 (−0,5): copia docs/plantillas/IA.md a ese archivo (Parte A.4)
+  [OK]    ningún archivo de agente de IA (.claude/, CLAUDE.md, AGENTS.md, .cursor/…)
+  [OK]    ningún commit con firma o coautor de IA (lab5-final..HEAD)
+  [OK]    respuestas sin marcas de texto generado
+  [OK]    38 evidencias con tu cabecera (E054) y una sola base de datos
+
+RESULTADO: 1 FALLO(S). Corrige antes de abrir el PR.
